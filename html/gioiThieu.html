@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="css/GioiThieu.css">
+
+<div class="main_content" id="form-dn">
+    <div class="row justify-content-center" id="form_gt">
+        <div class="accordion">
+            <div class="image-box">
+                <img src="images/logos/logo.png" alt="Accordion Image">
+            </div>
+            <div class="accordion-text">
+                <div class="title">FQUIZ</div>
+                <ul class="faq-text">
+                    <li>
+                        <div class="question-arrow">
+                            <span class="question">FQuiz?</span>
+                            <i class="bx bxs-chevron-down arrow"></i>
+                        </div>
+                        <p>FQuiz là một website thi trắc nghiệm trực tuyến triển khai theo hình thức SPA sử dụng công nghệ Bootstrap và AngularJS. Cho phép bạn đánh giá kiến thức và trình độ của mình trong nhiều lĩnh vực khác nhau. Với FQuiz, bạn có thể
+                            tạo ra các bài thi và chia sẻ với mọi người hoặc làm bài thi từ các nguồn được chia sẻ. Trang web còn cung cấp một kho tài nguyên và tài liệu học tập đầy đủ và chính xác để giúp bạn cải thiện kiến thức của mình. Hãy truy cập
+                            FQuiz ngay hôm nay để bắt đầu!</p>
+                        <span class="line"></span>
+                    </li>
+                    <li>
+                        <div class="question-arrow">
+                            <span class="question">Phần mềm là dự án</span>
+                            <i class="bx bxs-chevron-down arrow"></i>
+                        </div>
+                        <p>Assignment cuối môn Front-end frameworks. Được phát triển bởi sinh viên cao đẳng FPT Polytechnic Cần Thơ</p>
+                        <span class="line"></span>
+                    </li>
+                    <li>
+                        <div class="question-arrow">
+                            <span class="question">Ưu điểm của website?</span>
+                            <i class="bx bxs-chevron-down arrow"></i>
+                        </div>
+                        <p>Các trang được thiết kế đơn giản nhưng thuận mắt, dễ dàng sử dụng. Hơn nữa phần bố cục cũng được sắp xếp khá linh hoạt, logic giúp người dùng dễ tìm kiếm và trải nghiệm. FQuiz là trang web sử dụng công nghệ tiên tiến để tính điểm
+                            chính xác cho mỗi bài thi. Bên cạnh đó FQuiz có hệ thống bảo mật cao đảm bảo rằng dữ liệu của bạn luôn an toàn. Với các tính năng nổi bật này, FQuiz là một lựa chọn hoàn hảo cho việc tạo và làm bài thi trực tuyến một cách dễ
+                            dàng và hiệu quả.
+                        </p>
+                        <span class="line"></span>
+                    </li>
+                    <li>
+                        <div class="question-arrow">
+                            <span class="question">Các tính năng chủ yếu?</span>
+                            <i class="bx bxs-chevron-down arrow"></i>
+                        </div>
+                        <p>Fquiz cung cấp các tính năng như: Làm bài thi dưới hình thức trắc nghiệm, có điểm ngay khi kết thúc bài thi; Cung cấp tài liệu kham khảo; Dễ dàng thao tác, tương thích với nhiều thiết bị;...</p>
+                        <span class="line"></span>
+                    </li>
+                    <li>
+                        <div class="question-arrow">
+                            <span class="question">Cam kết</span>
+                            <i class="bx bxs-chevron-down arrow"></i>
+                        </div>
+                        <p>FQuiz xin cam kết để cung cấp cho bạn trải nghiệm thi trắc nghiệm trực tuyến tốt nhất với kho đề thi đa dạng được chọn lọc kỹ với những câu hỏi có nội dung trắc nghiệm chính xác và đầy đủ; Luôn hỗ trợ bạn 24/24 giải đáp mọi thắc
+                            mắc của bạn</p>
+                        <span class="line"></span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let li = document.querySelectorAll(".faq-text li");
+        for (var i = 0; i < li.length; i++) {
+            li[i].addEventListener("click", (e) => {
+                let clickedLi;
+                if (e.target.classList.contains("question-arrow")) {
+                    clickedLi = e.target.parentElement;
+                } else {
+                    clickedLi = e.target.parentElement.parentElement;
+                }
+                clickedLi.classList.toggle("showAnswer");
+            });
+        }
+    </script>
+</div>
+
+<script src="js/layout.js"></script>

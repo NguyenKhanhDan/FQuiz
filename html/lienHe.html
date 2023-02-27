@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="css/LienHe.css">
+
+<div class="main_content" id="form-dn">
+    <div class="containers">
+        <div class="content">
+            <div class="left-side">
+                <div class="address details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="topic">Địa chỉ</div>
+                    <div class="text-one">FPT Polytechnic</div>
+                    <div class="text-two">Ninh Kiều, Cần Thơ</div>
+                </div>
+                <div class="phone details">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="topic">Điện thoại</div>
+                    <div class="text-one">+0098 9893 5647</div>
+                    <div class="text-two">+0096 3434 5678</div>
+                </div>
+                <div class="email details">
+                    <i class="fas fa-envelope"></i>
+                    <div class="topic">Email</div>
+                    <div class="text-one">fquizzz@gmail.com</div>
+                    <div class="text-two">dannkpc04351@fpt.edu.vn</div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">Hãy để lại tin nhắn</div>
+                <p>Đội ngũ chuyên viên CSKH có thể hỗ trợ trong thời gian sớm nhất !!!</p>
+                <form>
+                    <div class="input-box">
+                        <input id="hoTen" type="text" placeholder="Họ & tên">
+                    </div>
+                    <div class="input-box">
+                        <input id="mail" type="text" placeholder="Email">
+                    </div>
+                    <div class="input-box message-box">
+                        <input id="mess" type="text" placeholder="Nội dung phản hồi">
+                    </div>
+                    <div class="buttons">
+                        <input type="button" value="Gửi" id="btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    var btn = document.getElementById("btn");
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var mail = document.getElementById("mail").value;
+        var mess = document.getElementById("mess").value;
+        var hoTen = document.getElementById("hoTen").value;
+        var body = 'Họ và tên: ' + hoTen + '<br/> Email: ' + mail + '<br/> Góp ý: ' + mess;
+        Email.send({
+            //7924ac6c-d9d1-41c7-a1d6-32174f645251
+            SecureToken: "aae8f5f7-4b58-4d34-a68c-1fbd2e88a812",
+            To: "fquizzz@gmail.com",
+            From: "fquizzz@gmail.com",
+            Subject: "MAIL PHẢN HỒI",
+            Body: body
+        }).then(
+            message => Swal.fire({
+                icon: 'success',
+                title: 'Gửi thành công!',
+                // text: 'Hẹn gặp lại!',
+                showConfirmButton: false,
+                closeOnClickOutside: false,
+                allowOutsideClick: false,
+                timer: 1500
+            })
+        );
+
+    });
+</script>

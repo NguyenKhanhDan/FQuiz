@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="css/DangKy.css">
+
+<section class="forms">
+    <div class="containers">
+        <div class="title">Đăng ký</div>
+        <p style="margin-top: 5px; color: red;">Vui lòng điền đầy đủ các thông tin có dấu * để tạo tài khoản</p>
+        <div class="content">
+            <form ng-init="Student.gender='true';Student.marks='0';" name="resign">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Họ và tên*</span>
+                        <input ng-model="Student.fullname" type="text" placeholder="Nguyễn Văn An" name="hoTen" required>
+                        <label style="color: red;"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Tên đăng nhập*</span>
+                        <input ng-model="Student.username" type="text" placeholder="an123" name="user" required>
+                        <label ng-show="resign.user.$invalid" style="color: red;"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email*</span>
+                        <input ng-model="Student.email" type="text" name="mail" placeholder="an123@gmail.com" required>
+                        <label ng-show="resign.mail.$invalid"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Ngày sinh*</span>
+                        <input ng-model="Student.birthday" type="date" name="date" id="bd" placeholder="ngày/tháng/năm" required>
+                        <label ng-show="resign.date.$invalid"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Mật khẩu*</span>
+                        <input ng-model="Student.password" name="pass" type="text" placeholder="123456" required>
+                        <label ng-show="resign.pass.$invalid"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Xác nhận mật khẩu*</span>
+                        <input ng-model="repassword" type="text" name="rePass" placeholder="123456" required>
+                        <label ng-show="resign.rePass.$invalid"></label><br>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Học phí</span>
+                        <input ng-model="Student.schoolfee" type="number" placeholder="" readonly>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Điểm</span>
+                        <input type="text" placeholder="" readonly>
+                    </div>
+                </div>
+                <div class="gender-details">
+                    <input type="radio" ng-model="Student.gender" value="true" name="gender" id="dot-1">
+                    <input type="radio" ng-model="Student.gender" value="false" name="gender" id="dot-2">
+                    <input type="radio" ng-model="Student.gender" value="other" name="gender" id="dot-3">
+                    <span class="gender-title">Giới tính</span>
+                    <div class="category">
+                        <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Nam</span>
+              </label>
+                        <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Nữ</span>
+              </label>
+                        </label>
+                        <label for="dot-3">
+    <span class="dot three"></span>
+    <span class="gender">Khác</span>
+  </label>
+                    </div>
+                </div>
+                <div class="field button-field">
+                    <button ng-click="register()" ng-disabled="resign.$invalid">Đăng ký</button>
+                </div>
+                <div class="form-link">
+                    <span>Bạn đã có tài khoản? <a href="#dangNhap" class="link login-link">Đăng nhập</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- <script src="js/layout.js"></script> -->

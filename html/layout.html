@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="css/index.css">
+
+<section id="hero" class="min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 data-aos="fade-left" class="text-uppercase text-white fw-semibold display-1">CHÀO MỪNG ĐẾN VỚI FQUIZ</h1>
+                <div class="gt">
+                    <li><i class="fa-solid fa-check"></i> Hằng trăm câu hỏi đa dạng</li>
+                    <li><i class="fa-solid fa-check"></i> Bám sát thực tế</li>
+                    <li><i class="fa-solid fa-check"></i> Giao diện dễ sử dụng</li>
+                    <li><i class="fa-solid fa-check"></i> Đầy đủ các câu hỏi từ cơ bản đến nâng cao</li>
+                    <li><i class="fa-solid fa-check"></i> Có các bài kiểm tra để kiểm tra trình độ</li>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="50">
+                    <a href="#dangNhap" class="btn btn-brand me-2">Bắt đầu</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="images/banner/banner.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <p data-aos="fade-left" class="title_KK">Tài liệu kham khảo</p>
+    <div class="line"></div>
+    <!-- slide -->
+    <div class="slide-container swiper">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+                <div class="card swiper-slide" ng-repeat="sub in Subjects">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="images/logos/{{sub.Logo}}" alt="" class="card-img">
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h2 class="name">{{sub.Name}}</h2>
+                        <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                        <button class="button"><a href="https://drive.google.com/drive/folders/1nNqtiCice99GMs4V7zPbthL-r-nXhv3N?usp=sharing"> Xem thêm...</a></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- slide -->
+</section>

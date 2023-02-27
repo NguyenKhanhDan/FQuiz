@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="css/Quiz.css">
+
+<div class="container" id="content">
+    <div class="row {{(Questions==null) ? 'show':'hide'}}" id="nd">
+        <div class="col text-center">
+            <div class="moTa">
+                <p>Nâng cao kiến thức và kiểm tra trình độ của bạn ngay hôm nay với FQuiz!!! </p>
+                <p>Thới gian cho mỗi bài kiểm tra là 15 phút với 10 câu hỏi.</p>
+            </div>
+            <button class="btn btn-primary" id="star" ng-click="start()">Bắt đầu bài kiểm tra</button>
+            <!-- <div class="moTa">
+                <p>Chọn "Submit" sau mỗi lần trả lời để xem và lưu kết quả.</p>
+                <p>Chọn "Kết thúc bài thi" khi bạn muốn thoát.</p>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="quiz {{(Questions==null) ? 'hide':'show'}}">
+        <div class="col text-center">
+            <div class="moTa">
+                <p>Chọn "Submit" sau mỗi lần trả lời để xem và lưu kết quả.</p>
+                <p>Chọn "Kết thúc bài thi" khi bạn muốn thoát.</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col text-center">
+                <h2><i class="fas fa-clock" style="color: #4070f4;"></i> {{(timer-timer%60)/60}}:{{timer%60}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card border-info" style="background: white;">
+                    <div class="card-header text-white" style="background-color: #4070f4;">
+                        <img src="images/logos/{{subject.Logo}}" width="30" class="border border-primary rounded-lg" alt="">
+                        <span class="title">  {{subject.Name}}</span>
+                        <span class="badge badge-dark" id="badge" style="padding: .28em .7em; background-color: #4070f4; font-size: 16px; float: right;">
+                            {{indexQuestions + 1}}/10</span>
+                    </div>
+                    <div class="card-body" style="padding: 20px;">
+                        <p class="card-text">
+                            {{indexQuestions + 1 + '.' + ' ' + Questions[indexQuestions].Text}}
+                            <hr>
+                            <div ng-repeat="ans in answers">
+                                <div class="form-check">
+                                    <input ng-disabled="expression[indexQuestions].count==0" class="form-check-input" ng-model="expression[indexQuestions].answer" name="bgroup" type="radio" id="{{ans.Id}}" value="{{ans.Id}}" required>
+                                    <label class="form-check-label" for="{{ans.Id}}">{{ans.Text}} <i ng-show="{{ans.AnswerId}}" class="fa-solid fa-check"></i></label>
+                                    <span class="glyphicon glyphicon-ok" style="color: green;" ng-show="checkSubmit[indexQuestions] == ans.Id"></span>
+                                </div>
+                            </div>
+
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="card-footer row m-0" style="padding: 10px;">
+                        <div class="col-md-10">
+                            <button class="btn btn-primary" style="background-color: #4070f4;" ng-click="moveQuestion(indexQuestions - 1)" ng-disabled="indexQuestions == 0">Prev</button>
+                            <span class="badge badge-success" style="padding: .28em .7em; font-size: 90%; color: black;font-weight: 500; background-color: white; font-size: 16px;">Điểm:
+                                {{mark}}/10</span>
+                            <button class="btn btn-primary" style="background-color: #4070f4;" ng-click="moveQuestion(indexQuestions + 1)" ng-disabled="indexQuestions == 9">Next</button>
+                        </div>
+                        <div class="col-md-2 mt-1">
+                            <button ng-disabled="expression[indexQuestions].count == 0" class="btn btn-primary" style="background-color: #4070f4;" ng-click="checkAnswer();expression[indexQuestions].count=0">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col text-center" id="btn-end">
+                <button ng-click="finish()" class="btn btn-primary" style="background-color: #4070f4;">Kết thúc bài kiểm tra</button>
+            </div>
+        </div>
+    </div>
+
+</div>

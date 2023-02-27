@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="css/DSMonHoc.css">
+
+<div class="main_content" id="form-dn" ng-controller="DSMonHocCtrl">
+    <form class="seach-form row">
+        <h1>{{(Student==null)? 'VUI LÒNG ĐĂNG NHẬP ĐỂ BẮT ĐẦU LÀM BÀI !!!' : ''}}</h1>
+        <div class="col-md-3">
+        </div>
+        <div class="form-field col-lg-6">
+            <input id="seach" class="input-text js-input" ng-model="search" ng-change="Search()" type="text" required>
+            <label class="label" for="seach">Tìm kiếm môn học</label>
+        </div>
+    </form>
+    <div class="container">
+        <div ng-show="subjects.length==0">
+            <h3 style="margin: 30px;">Không tìm thấy môn học!</h3>
+        </div>
+        <div ng-hide="subjects.length==0" class="container_left">
+            <div ng-repeat="sub in subjects | limitTo:6:begin" class="box">
+                <div class="image">
+                    <img src="images/logos/{{sub.Logo}}">
+                </div>
+                <div class="name_job">{{sub.Name}}</div>
+                <p> Lorem ipsum dolor sitamet, stphen hawkin so adipisicing elit. Ratione disuja doloremque reiciendi nemo.</p>
+                <div class="btns">
+                    <a href="#quiz/{{sub.Id}}" ng-hide="Student == null">Bắt đầu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn_page">
+        <ul>
+            <li><a ng-click="first()" href=""><i class="fa-solid fa-chevron-left"></i> First</a></li>
+            <li><a ng-click="prev()" href=""><i class="fa-solid fa-angles-left"></i></a></li>
+            <div>{{count}}</div>
+            <li><a ng-click="next()" href=""><i class="fa-solid fa-angles-right"></i></a></li>
+            <li><a ng-click="last()" href="">Last <i class="fa-solid fa-chevron-right"></i></a></li>
+        </ul>
+    </div>
+</div>

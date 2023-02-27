@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="css/QuenMatKhau.css">
+
+<div class="main_content" id="content2">
+    <div class="container padding-bottom-3x mb-2 mt-5">
+        <div class="row justify-content-center" id="content">
+            <div class="col-lg-8 col-md-10">
+                <div class="forgot">
+                    <h2>Bạn quên mật khẩu?</h2>
+                    <p>
+                        Thay đổi mật khẩu của bạn trong ba bước đơn giản. Điều này sẽ giúp bạn bảo mật mật khẩu của mình!!</p>
+                    <ol class="list-unstyled">
+                        <li><span class="text-primary text-medium">1. </span>Nhập email đã đăng ký tài khoản.</li>
+                        <li><span class="text-primary text-medium">2. </span>Nhập mã xác nhận đã gửi qua email.</li>
+                        <li><span class="text-primary text-medium">3. </span>Nhập thông tin để đổi mật khẩu.</li>
+                    </ol>
+
+                </div>
+                <form class="card mt-4" ng-show="kt==null">
+                    <p>Nhập địa chỉ email được dùng để đằng ký tài khoản trước đó!</p>
+                    <div class="input-box">
+                        <input ng-model="mail" class="input" type="text" placeholder="Email">
+                        <i class="fas fa-envelope email-icon"></i>
+                        <i class="fas fa-exclamation-circle error-icon"></i>
+                        <i class="fas fa-check-circle passed-icon"></i>
+                        <input ng-click="checkMail()" class="button" type="submit" value="OK" id="btn">
+                    </div>
+                    <p class="text"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="maxn" ng-hide="ma==null">
+        <div class="wrapper">
+            <div class="title"><span>Mã xác nhận</span></div>
+            <form>
+                <div class="row">
+                    <i class="fa-solid fa-key"></i>
+                    <input ng-model="validCode" type="text" placeholder="VD: 032342" required>
+                </div>
+
+                <div class="row button">
+                    <input type="submit" ng-click="checkValidCode()" value="OK">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="fogotPass" ng-hide="maxn==null">
+        <div class="wrapper">
+            <div class="title"><span>Quên mật khẩu</span></div>
+            <form>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input ng-model="newPass" type="password" placeholder="Mật khẩu mới" required>
+                </div>
+                <div class="row">
+                    <i class="fas fa-lock"></i>
+                    <input ng-model="reNewPass" type="password" placeholder="Nhập lại mật khẩu" required>
+                </div>
+
+                <div class="row button">
+                    <input type="submit" ng-click="changePass()" value="Xác nhận">
+                </div>
+                <div class="signup-link">Quay lại <a href="#dangNhap">đăng nhập</a></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+    //Kiểm tra lỗi nhập mail
+    const form = document.querySelector("form"),
+        eInput = form.querySelector(".input"),
+        text = form.querySelector(".text");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); //preventing form from submitting
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        form.classList.add("error");
+        form.classList.remove("valid");
+        if (eInput.value == "") {
+            text.innerText = "Vui lòng nhập Email!!!";
+        } else if (!eInput.value.match(pattern)) {
+            text.innerText = "Vui lòng nhập Email đúng định dạng!";
+        } else {
+            form.classList.replace("error", "valid");
+            text.innerText = "Email hợp lệ!";
+        }
+    });
+</script>

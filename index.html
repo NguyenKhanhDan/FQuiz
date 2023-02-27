@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- link sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css"/>
+
+    <link rel="stylesheet" href="fontawesome-free-6.2.1-web/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <!-- logo tab bar -->
+    <link rel="icon" href="images/logos/logo.png" type="image/x-icon"/>
+    <title>FQuiz</title>
+  </head>
+
+  <body ng-app="myApp">
+    <nav ng-show="timer==0">
+      <div class="navbar">
+        <i class="bx bx-menu"></i>
+        <div class="logo">
+          <a href="#layout">
+            <img src="images/logos/logo.png" height="30" />- Quiz</a>
+        </div>
+        <div class="nav-links">
+          <div class="sidebar-logo">
+            <span class="logo-name"
+              ><img src="images/logos/logo.png" height="30" />- Quiz</span>
+            <i class="bx bx-x"></i>
+          </div>
+          <ul class="links">
+            <li>
+              <a href="#layout"><i class="bx bx-home"></i> Trang chủ</a>
+            </li>
+            <li><a href="#gioiThieu">Giới thiệu</a></li>
+            <!-- <li><a href="#">Góp ý</a></li> -->
+            <li><a href="#lienHe">Liên hệ</a></li>
+            <li>
+              <a href="#danhSachMonhoc">Môn học</a>
+              <i class="bx bxs-chevron-down htmlcss-arrow arrow"></i>
+              <ul class="htmlCss-sub-menu sub-menu">
+                <li ng-repeat="sub in Subjects | limitTo: 10">
+                  <a href="#quiz/{{sub.Id}}">{{sub.Name}}</a>
+                </li>
+                <li class="more">
+                  <span><a href="">Java</a>
+                    <i class="bx bxs-chevron-right arrow more-arrow"></i>
+                  </span>
+                  <ul class="more-sub-menu sub-menu">
+                    <li><a href="">Java 1</a></li>
+                    <li><a href="">Java 2</a></li>
+                    <li><a href="">Java 3</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="">{{(Student==null)? 'Tài khoản' : Student.fullname}}</a>
+              <i class="bx bxs-chevron-down js-arrow arrow"></i>
+              <ul class="js-sub-menu sub-menu" ng-show="Student == null">
+                <li><a href="#dangKy">Đăng ký</a></li>
+                <li><a href="#dangNhap">Đăng nhập</a></li>
+                <li><a href="#quenMatKhau">Quên mật khẩu</a></li>
+              </ul>
+              <ul class="js-sub-menu sub-menu" ng-hide="Student == null">
+                <li><a href="#layout" ng-click="logout()">Đăng xuất</a></li>
+                <li><a href="#doiMatKhau">Đổi mật khẩu</a></li>
+                <li><a href="#capNhatTK">Cập nhật tài khoản</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="search-box">
+          <i class="bx bx-search"></i>
+          <div class="input-box">
+            <input type="text" placeholder="Search..." />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div ng-view></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row gy-5">
+            <div class="col-lg-3 col-sm-6">
+              <a href="#"
+                ><img src="images/logos/logo.png" alt="" height="40"
+              /></a>
+              <div class="line"></div>
+              <p>FQuiz cảm ơn bạn đã tin tưởng!</p>
+              <div class="social-icons">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100025127976978&mibextid=ZbWKwL"
+                  class="me-4 text-reset"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://www.youtube.com/channel/UCBDlXPNj8a6Hu_4r0oabF2g"
+                  class="me-4 text-reset"
+                >
+                  <i class="fab fa-youtube"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/khanhdan0604/"
+                  class="me-4 text-reset"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/khanh-dan-nguyen-b4202b239/"
+                  class="me-4 text-reset"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a
+                  href="https://github.com/NguyenKhanhDan"
+                  class="me-4 text-reset"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center">
+              <h5 class="mb-0 text-white">Chức năng</h5>
+              <!-- <div class="line"></div> -->
+              <ul>
+                <li><a href="#dangKy" class="text-reset">Đăng ký</a></li>
+                <li><a href="#dangNhap" class="text-reset">Đăng nhập</a></li>
+                <li>
+                  <a href="#danhSachMonhoc" class="text-reset">Danh sách môn</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center">
+              <h5 class="mb-0 text-white">Hỗ trợ</h5>
+              <!-- <div class="line"></div> -->
+              <ul>
+                <li><a href="#gioiThieu" class="text-reset">Giới thiệu</a></li>
+                <li><a href="#lienHe" class="text-reset">Hỏi đáp</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6 text-center">
+              <h5 class="mb-0 text-white">Liên hệ</h5>
+              <!-- <div class="line"></div> -->
+              <ul>
+                <li><i class="fas fa-home me-3"></i> Ninh Kiều, TP Cần Thơ</li>
+                <li><i class="fas fa-envelope me-3"></i> fquizzz@gmail.com</li>
+                <li><i class="fas fa-phone me-3"></i> 031.1802.1703</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row g-4 justify-content-between">
+            <p class="mb-0">FPT Polytechnic Cần Thơ</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <!--Uncomment this line-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script> -->
+
+    <script src="app/myApp.js"></script>
+    <script src="app/layout.js"></script>
+    <script src="app/quiz.js"></script>
+    <script src="app/dangKy.js"></script>
+    <script src="app/dangNhap.js"></script>
+    <script src="app/taiKhoan.js"></script>
+    <script src="app/quenMatKhau.js"></script>
+    <script src="app/doiMK.js"></script>
+    <script src="app/MonHoc.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCYClVNtSAhChwe67j90a5riw7mDq_Nxqw",
+        authDomain: "fquiz-3d1fa.firebaseapp.com",
+        databaseURL: "https://fquiz-3d1fa-default-rtdb.firebaseio.com",
+        projectId: "fquiz-3d1fa",
+        storageBucket: "fquiz-3d1fa.appspot.com",
+        messagingSenderId: "123755525346",
+        appId: "1:123755525346:web:f029af8cb203a45e041abb",
+        measurementId: "G-YH44KN0410",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+  </body>
+</html>
